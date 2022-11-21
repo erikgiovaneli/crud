@@ -1,2 +1,15 @@
 <br>
-<app-cliente></app-cliente>
+<dx-data-grid [dataSource]="cliente" [remoteOperations]="true"
+              [height]="600"
+              [showBorders]="true"
+              [showColumnLines]="true" >
+  <dxo-editing
+    mode="popup"
+    [allowAdding]="true"
+    [allowUpdating]="true"
+    [allowDeleting]="true"
+  >
+    <dxo-popup title="Clientes" [showTitle]="true" [width]="500" [height]="500">
+    </dxo-popup>
+  </dxo-editing>
+</dx-data-grid>
