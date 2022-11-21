@@ -13,8 +13,8 @@ export const navigation = [
         path: '/profile'
       },
       {
-        text: 'Tasks',
-        path: '/tasks'
+        text: 'Produtos',
+        path: '/produto'
       },
       {
         text: 'Cliente',

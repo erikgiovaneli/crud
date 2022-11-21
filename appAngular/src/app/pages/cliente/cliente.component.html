@@ -2,7 +2,8 @@
 <dx-data-grid [dataSource]="cliente" [remoteOperations]="true"
               [height]="600"
               [showBorders]="true"
-              [showColumnLines]="true" >
+              [showColumnLines]="true"
+s              (onInitNewRow)="oninitNewRow($event)" >
   <dxo-editing
     mode="popup"
     [allowAdding]="true"
@@ -12,4 +13,11 @@
     <dxo-popup title="Clientes" [showTitle]="true" [width]="500" [height]="500">
     </dxo-popup>
   </dxo-editing>
+  <dxi-column dataField="id" [allowEditing]="false" ></dxi-column>
+  <dxi-column dataField="cod">
+    <dxi-validation-rule type="required"></dxi-validation-rule>
+  </dxi-column>
+  <dxi-column dataField="nome">
+    <dxi-validation-rule type="required"></dxi-validation-rule>
+  </dxi-column>
 </dx-data-grid>

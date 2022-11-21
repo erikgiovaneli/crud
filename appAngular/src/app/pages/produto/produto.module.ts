@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {ReactiveFormsModule} from "@angular/forms";
-import {ClienteComponent} from "./cliente.component";
 import {DevExtremeModule} from "devextreme-angular";
+import {ProdutoComponent} from "./produto.component";
 
 
 
 @NgModule({
-  declarations: [ClienteComponent],
+  declarations: [ProdutoComponent],
   exports: [
-    ClienteComponent
+    ProdutoComponent
   ],
   imports: [
     CommonModule,
@@ -17,4 +17,4 @@ import {DevExtremeModule} from "devextreme-angular";
     DevExtremeModule
   ]
 })
-export class ClienteModule { }
+export class ProdutoModule { }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {ClienteService} from "../../services/cliente.service";
-import {Cliente} from "../../../models/cliente";
+import {ClienteService} from "../../shared/services/cliente.service";
+import {Cliente} from "../../models/cliente";
 
 @Component({
   selector: 'app-cliente',
@@ -19,9 +19,9 @@ export class ClienteComponent implements OnInit {
     this.service.getCliente().subscribe((c)=>{
       this.cliente = c;
     })
-
-
   }
 
-
+  oninitNewRow(e: any) {
+    console.log("OnInitNewRow")
+  }
 }

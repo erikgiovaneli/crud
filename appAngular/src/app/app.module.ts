@@ -7,16 +7,15 @@ import { FooterModule } from './shared/components';
 import { AuthService, ScreenService, AppInfoService } from './shared/services';
 import { UnauthenticatedContentModule } from './unauthenticated-content';
 import { AppRoutingModule } from './app-routing.module';
-import { ClienteComponent } from './pages/cliente/cliente.component';
 import {ReactiveFormsModule} from "@angular/forms";
-import {ClienteModule} from "./shared/components/cliente/cliente.module";
+import {ClienteModule} from "./pages/cliente/cliente.module";
 import { DxDataGridModule } from 'devextreme-angular';
 import {HttpClientModule} from "@angular/common/http";
+import {ProdutoModule} from "./pages/produto/produto.module";
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ClienteComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -28,6 +27,7 @@ import {HttpClientModule} from "@angular/common/http";
     UnauthenticatedContentModule,
     AppRoutingModule,
     ClienteModule,
+    ProdutoModule,
     DxDataGridModule,
     HttpClientModule
   ],

@@ -1,5 +1,6 @@
-export class Cliente {
+export class Produto {
   id!: number;
   cod!: string;
-  nome!: string;
+  descricao!: string;
+  valor!: bigint;
 }

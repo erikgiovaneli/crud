@@ -3,14 +3,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuardService } from './shared/services';
 import { HomeComponent } from './pages/home/home.component';
 import { ProfileComponent } from './pages/profile/profile.component';
-import { TasksComponent } from './pages/tasks/tasks.component';
+import { ProdutoComponent } from './pages/produto/produto.component';
 import { DxDataGridModule, DxFormModule } from 'devextreme-angular';
 import {ClienteComponent} from "./pages/cliente/cliente.component";
 
 const routes: Routes = [
   {
-    path: 'tasks',
-    component: TasksComponent,
+    path: 'produto',
+    component: ProdutoComponent,
     canActivate: [ AuthGuardService ]
   },
   {
@@ -40,8 +40,7 @@ const routes: Routes = [
   exports: [RouterModule],
   declarations: [
     HomeComponent,
-    ProfileComponent,
-    TasksComponent
+    ProfileComponent
   ]
 })
 export class AppRoutingModule { }
