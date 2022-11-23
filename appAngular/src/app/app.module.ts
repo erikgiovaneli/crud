@@ -12,6 +12,7 @@ import {ClienteModule} from "./pages/cliente/cliente.module";
 import { DxDataGridModule } from 'devextreme-angular';
 import {HttpClientModule} from "@angular/common/http";
 import {ProdutoModule} from "./pages/produto/produto.module";
+import {NotaModule} from "./pages/nota/nota.module";
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import {ProdutoModule} from "./pages/produto/produto.module";
     AppRoutingModule,
     ClienteModule,
     ProdutoModule,
+    NotaModule,
     DxDataGridModule,
     HttpClientModule
   ],

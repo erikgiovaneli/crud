@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuardService } from './shared/services';
 import { HomeComponent } from './pages/home/home.component';
-import { ProfileComponent } from './pages/profile/profile.component';
+import { NotaComponent } from './pages/nota/nota.component';
 import { ProdutoComponent } from './pages/produto/produto.component';
 import { DxDataGridModule, DxFormModule } from 'devextreme-angular';
 import {ClienteComponent} from "./pages/cliente/cliente.component";
@@ -19,8 +19,8 @@ const routes: Routes = [
     canActivate: [ AuthGuardService ]
   },
   {
-    path: 'profile',
-    component: ProfileComponent,
+    path: 'nota',
+    component: NotaComponent,
     canActivate: [ AuthGuardService ]
   },
   {
@@ -39,8 +39,7 @@ const routes: Routes = [
   providers: [AuthGuardService],
   exports: [RouterModule],
   declarations: [
-    HomeComponent,
-    ProfileComponent
+    HomeComponent
   ]
 })
 export class AppRoutingModule { }

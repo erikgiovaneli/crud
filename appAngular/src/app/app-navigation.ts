@@ -9,8 +9,8 @@ export const navigation = [
     icon: 'folder',
     items: [
       {
-        text: 'Profile',
-        path: '/profile'
+        text: 'Notas Fiscais',
+        path: '/nota'
       },
       {
         text: 'Produtos',

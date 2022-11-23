@@ -3,7 +3,15 @@
               [height]="600"
               [showBorders]="true"
               [showColumnLines]="true"
-s              (onInitNewRow)="oninitNewRow($event)" >
+              (onInitNewRow)="onInitNewRow($event)"
+              (onRowInserted)="onRowInserted($event)"
+              (onRowInserting)="onRowInserting($event)"
+              (onRowRemoved)="onRowRemoved($event)"
+              (onRowRemoving)="onRowRemoving($event)"
+              (onRowUpdated)="onRowUpdated($event)"
+              (onRowUpdating)="onRowUpdating($event)"
+              (onSaved)="onSaved($event)"
+              (onSaving)="onSaving($event)" >
   <dxo-editing
     mode="popup"
     [allowAdding]="true"
