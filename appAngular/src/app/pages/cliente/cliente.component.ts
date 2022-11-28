@@ -22,16 +22,6 @@ export class ClienteComponent implements OnInit {
     })
   }
 
-  async adicionaCliente(data: Cliente) {
-    this.carregando = true;
-
-    try {
-      await this.ClienteService.postCliente(data);
-    } finally {
-      this.carregando = false;
-    }
-  }
-
   onInitNewRow(e: any) {
     console.log("OnInitNewRow");
   }
@@ -58,19 +48,30 @@ export class ClienteComponent implements OnInit {
   }
   onSaving(e: any) {
     console.log("onSaving");
-    const change = e.changes[0];
-    if(e.change && e.change.size > 0){
-      if (e.change.type === 'insert'){
-        console.log("Inserido");
-      }
-      else if (e.change.type === 'update'){
-        console.log("Atualizado");
-      }
-      else if (e.change.type === 'remove'){
-        console.log("Deletado");
+    if(e.changes && e.changes.length > 0){
+      for (let i of e.changes) {
+        if (i.type === 'insert'){
+          console.log("Inserido");
+          e.promisse = this.adicionaCliente(i.data as Cliente);
+        }
+        else if (i.type === 'update'){
+          console.log("Atualizado");
+        }
+        else if (i.type === 'remove'){
+          console.log("Deletado");
+        }
       }
     }
 
 
+  }
+
+  async adicionaCliente(data: Cliente) {
+    this.carregando = true;
+    try {
+      await this.ClienteService.postCliente(data);
+    } finally {
+      this.carregando = false;
+    }
   }
 }
