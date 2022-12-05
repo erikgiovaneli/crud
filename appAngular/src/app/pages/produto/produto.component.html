@@ -2,7 +2,8 @@
 <dx-data-grid [dataSource]="produto" [remoteOperations]="true"
               [height]="600"
               [showBorders]="true"
-              [showColumnLines]="true" >
+              [showColumnLines]="true"
+              (onSaving)="onSaving($event)" >
   <dxo-editing
     mode="popup"
     [allowAdding]="true"
@@ -12,4 +13,14 @@
     <dxo-popup title="Produtos" [showTitle]="true" [width]="500" [height]="500">
     </dxo-popup>
   </dxo-editing>
+  <dxi-column dataField="id" [allowEditing]="false" ></dxi-column>
+  <dxi-column dataField="cod" dataType="number">
+    <dxi-validation-rule type="required"></dxi-validation-rule>
+  </dxi-column>
+  <dxi-column dataField="descricao" dataType="string">
+    <dxi-validation-rule type="required"></dxi-validation-rule>
+  </dxi-column>
+  <dxi-column dataField="valor" dataType="number">
+    <dxi-validation-rule type="required"></dxi-validation-rule>
+  </dxi-column>
 </dx-data-grid>

@@ -5,7 +5,7 @@ export const navigation = [
     icon: 'home'
   },
   {
-    text: 'Pages',
+    text: 'Páginas',
     icon: 'folder',
     items: [
       {

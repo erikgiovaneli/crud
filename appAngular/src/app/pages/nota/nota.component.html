@@ -1,0 +1,30 @@
+<br>
+<dx-data-grid [dataSource]="nota" [remoteOperations]="true"
+              [height]="600"
+              [showBorders]="true"
+              [showColumnLines]="true"
+              (onSaving)="onSaving($event)">
+
+  <dxo-editing
+    mode="popup"
+    [allowAdding]="true"
+    [allowUpdating]="true"
+    [allowDeleting]="true"
+  >
+    <dxo-popup title="Nota Fiscal" [showTitle]="true" [width]="500" [height]="500">
+    </dxo-popup>
+  </dxo-editing>
+  <dxi-column dataField="id" [allowEditing]="false" ></dxi-column>
+  <dxi-column dataField="numero" dataType="number">
+    <dxi-validation-rule type="required"></dxi-validation-rule>
+  </dxi-column>
+  <dxi-column dataField="dataCriacao" dataType="date">
+    <dxi-validation-rule type="required"></dxi-validation-rule>
+  </dxi-column>
+  <dxi-column dataField="nome" dataType="string">
+    <dxi-validation-rule type="required"></dxi-validation-rule>
+  </dxi-column>
+  <dxi-column dataField="itens" dataType="string">
+    <dxi-validation-rule type="required"></dxi-validation-rule>
+  </dxi-column>
+</dx-data-grid>

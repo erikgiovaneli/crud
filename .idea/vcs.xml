@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="VcsDirectoryMappings">
-    <mapping directory="$PROJECT_DIR$/FrontAngular" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/Nota-Fiscal" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/SpringAPI" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/SpringAPI/Nota-Fiscal" vcs="Git" />
+    <mapping directory="" vcs="Git" />
   </component>
 </project>

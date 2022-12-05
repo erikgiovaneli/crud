@@ -24,7 +24,7 @@ import br.com.erik.notaFiscal.modelo.Cliente;
 import br.com.erik.notaFiscal.repository.ClienteRepository;
 
 @RestController
-@RequestMapping("/Cliente")
+@RequestMapping("/cliente")
 public class ClienteController {
 	
 	@Autowired
@@ -39,7 +39,7 @@ public class ClienteController {
 	@PostMapping
 	public ResponseEntity<Cliente> cadastrar(@RequestBody @Validated Cliente cliente, UriComponentsBuilder uriBuilder){
 		cliente = clienteRepository.save(cliente);
-		URI uri = uriBuilder.path("/Notas/{id}").buildAndExpand(cliente.getId()).toUri();
+		URI uri = uriBuilder.path("/cliente/{id}").buildAndExpand(cliente.getId()).toUri();
 		return ResponseEntity.created(uri).body(cliente);
 	}
 	

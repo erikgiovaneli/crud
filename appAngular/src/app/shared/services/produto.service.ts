@@ -10,12 +10,20 @@ export class ProdutoService {
   }
 
   getProduto(): Observable<Produto[]> {
-    return this.http.get<Produto[]>("/api/Produto");
+    return this.http.get<Produto[]>("/api/produto");
   }
 
-  /*postProduto(dados: Produto): Observable<Produto> {
-    return this.http.post<Produto>('/api/Produto', dados);
-  }*/
+  postProduto(dados: Produto): Observable<Produto> {
+    return this.http.post<Produto>('/api/produto', dados);
+  }
+
+  deleteProduto(id: number): Observable<any>{
+    return this.http.delete<any>('/api/produto/' + id);
+  }
+
+  putProduto(dados: Produto): Observable<any> {
+    return this.http.put<Produto>('/api/produto', dados);
+  }
 
 }
 

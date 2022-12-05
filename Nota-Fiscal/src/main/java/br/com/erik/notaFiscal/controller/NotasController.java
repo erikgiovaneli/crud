@@ -23,7 +23,7 @@ import br.com.erik.notaFiscal.modelo.Nota;
 import br.com.erik.notaFiscal.repository.NotaRepository;
 
 @RestController
-@RequestMapping("/Nota")
+@RequestMapping("/nota")
 public class NotasController {
 	
 	@Autowired
@@ -38,12 +38,12 @@ public class NotasController {
 	@PostMapping
 	public ResponseEntity<Nota> cadastrar(@RequestBody Nota nota, UriComponentsBuilder uriBuilder){
 		nota = notaRepository.save(nota);
-		URI uri = uriBuilder.path("/Notas/{id}").buildAndExpand(nota.getId()).toUri();
+		URI uri = uriBuilder.path("/nota/{id}").buildAndExpand(nota.getId()).toUri();
 		return ResponseEntity.created(uri).body(nota);
 	}
 	
 	@PutMapping
-	public Nota atualizaNotao(@RequestBody Nota nota) {
+	public Nota atualizaNota(@RequestBody Nota nota) {
 		return notaRepository.save(nota);
 	}
 	

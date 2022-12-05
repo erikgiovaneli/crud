@@ -21,7 +21,7 @@ public class Produto {
 	private String cod;
 	@NotNull @NotEmpty
 	private String descricao;
-	@NotNull @NotEmpty
+	@NotNull
 	private BigDecimal valor;
 	
 	

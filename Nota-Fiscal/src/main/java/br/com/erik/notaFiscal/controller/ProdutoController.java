@@ -23,7 +23,7 @@ import br.com.erik.notaFiscal.modelo.Produto;
 import br.com.erik.notaFiscal.repository.ProdutoRepository;
 
 @RestController
-@RequestMapping("/Produto")
+@RequestMapping("/produto")
 public class ProdutoController {
 	
 	@Autowired
@@ -38,7 +38,7 @@ public class ProdutoController {
 	@PostMapping
 	public ResponseEntity<Produto> cadastrar(@RequestBody Produto produto, UriComponentsBuilder uriBuilder){
 		produto = produtoRepository.save(produto);
-		URI uri = uriBuilder.path("/Notas/{id}").buildAndExpand(produto.getId()).toUri();
+		URI uri = uriBuilder.path("/produto/{id}").buildAndExpand(produto.getId()).toUri();
 		return ResponseEntity.created(uri).body(produto);
 	}
 	

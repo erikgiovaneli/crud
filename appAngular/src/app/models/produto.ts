@@ -1,6 +1,6 @@
 export class Produto {
-  id!: number;
-  cod!: string;
-  descricao!: string;
-  valor!: bigint;
+  id!: number | undefined;
+  cod!: string | undefined;
+  descricao!: string | undefined;
+  valor!: bigint | undefined;
 }

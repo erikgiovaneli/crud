@@ -23,7 +23,7 @@ import br.com.erik.notaFiscal.modelo.Item;
 import br.com.erik.notaFiscal.repository.ItemRepository;
 
 @RestController
-@RequestMapping("/Item")
+@RequestMapping("/item")
 public class ItemController {
 	
 	@Autowired
