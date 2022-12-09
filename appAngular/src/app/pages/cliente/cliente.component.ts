@@ -25,50 +25,26 @@ export class ClienteComponent implements OnInit {
     })
   }
 
-  /*onInitNewRow(e: any) {
-    console.log("OnInitNewRow");
-  }
-  onRowInserted(e: any) {
-    console.log("onRowInserted");
-  }
-  onRowInserting(e: any) {
-    console.log("onRowInserting");
-  }
-  onRowRemoved(e: any) {
-    console.log("onRowRemoved");
-  }
-  onRowRemoving(e: any) {
-    console.log("onRowRemoving");
-  }
-  onRowUpdated(e: any) {
-    console.log("OnRowUpdated");
-  }
-  onRowUpdating(e: any) {
-    console.log("onRowUpdating");
-  }
-  onSaved(e: any) {
+  async onSaved(e: any) {
     console.log("onSaved");
-  }*/
-
-  async onSaving(e: any) {
-    console.log("onSaving");
     if(e.changes && e.changes.length > 0){
       for (let i of e.changes) {
         if (i.type === 'insert'){
           e.promisse = await this.adicionaCliente(i.data as Cliente);
         }
         else if (i.type === 'update'){
-          console.log("Atualizado");
-          //e.promisse = await this.atualizaCliente(i.data as Cliente);
+          let cliente$ = await this.ClienteService.putCliente(i.data as Cliente);
+          e.promisse = lastValueFrom(cliente$);
         }
         else if (i.type === 'remove'){
-          console.log("Deletado");
           e.promisse = await this.excluiCliente(i.key.id);
         }
       }
     }
+  }
 
-
+  onSaving(e: any) {
+    console.log("onSaving");
   }
 
   async adicionaCliente(data: Cliente) {
@@ -91,18 +67,6 @@ export class ClienteComponent implements OnInit {
     } finally {
       this.carregando = false;
     }
-  }
-
-  async atualizaCliente(data: Cliente) {
-    this.carregando = true;
-    let cliente: Cliente = new Cliente();
-    try {
-      let cliente$ = this.ClienteService.putCliente(data);
-      return await lastValueFrom(cliente$);
-    } finally {
-      this.carregando = false;
-    }
-    return cliente;
   }
 
 }

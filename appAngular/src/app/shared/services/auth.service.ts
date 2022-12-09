@@ -8,7 +8,7 @@ export interface IUser {
 
 const defaultPath = '/';
 const defaultUser = {
-  email: 'sandra@example.com',
+  email: 'Erik Giovaneli',
   avatarUrl: 'https://js.devexpress.com/Demos/WidgetsGallery/JSDemos/images/employees/06.png'
 };
 
@@ -64,57 +64,7 @@ export class AuthService {
     }
   }
 
-  async createAccount(email: string, password: string) {
-    try {
-      // Send request
-      console.log(email, password);
 
-      this.router.navigate(['/create-account']);
-      return {
-        isOk: true
-      };
-    }
-    catch {
-      return {
-        isOk: false,
-        message: "Failed to create account"
-      };
-    }
-  }
-
-  async changePassword(email: string, recoveryCode: string) {
-    try {
-      // Send request
-      console.log(email, recoveryCode);
-
-      return {
-        isOk: true
-      };
-    }
-    catch {
-      return {
-        isOk: false,
-        message: "Failed to change password"
-      }
-    };
-  }
-
-  async resetPassword(email: string) {
-    try {
-      // Send request
-      console.log(email);
-
-      return {
-        isOk: true
-      };
-    }
-    catch {
-      return {
-        isOk: false,
-        message: "Failed to reset password"
-      };
-    }
-  }
 
   async logOut() {
     this._user = null;

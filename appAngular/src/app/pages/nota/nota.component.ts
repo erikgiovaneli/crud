@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {lastValueFrom} from "rxjs";
 import {Nota} from "../../models/nota";
 import {NotaService} from "../../shared/services/nota.service";
+import {Cliente} from "../../models/cliente";
 
 @Component({
   selector: 'app-cliente',
@@ -23,7 +24,7 @@ export class NotaComponent {
     })
   }
 
-  async onSaving(e: any) {
+  async onSaved(e: any) {
     console.log("onSaving");
     if(e.changes && e.changes.length > 0){
       for (let i of e.changes) {
@@ -32,7 +33,8 @@ export class NotaComponent {
         }
         else if (i.type === 'update'){
           console.log("Atualizado");
-          //e.promisse = await this.atualizaNota(i.data as Nota);
+          let nota$ = await this.NotaService.putNota(i.data as Nota);
+          e.promisse = lastValueFrom(nota$);
         }
         else if (i.type === 'remove'){
           console.log("Deletado");

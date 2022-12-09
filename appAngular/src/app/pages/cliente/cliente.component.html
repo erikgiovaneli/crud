@@ -1,9 +1,12 @@
+<div class="titulo">
+  <h3>Tabela de Clientes</h3>
+</div>
 <br>
 <dx-data-grid [dataSource]="cliente" [remoteOperations]="true"
               [height]="600"
               [showBorders]="true"
               [showColumnLines]="true"
-              (onSaving)="onSaving($event)" >
+              (onSaved)="onSaved($event)" >
               <!–(onInitNewRow)="onInitNewRow($event)"
               (onRowInserted)="onRowInserted($event)"
               (onRowInserting)="onRowInserting($event)"
@@ -11,22 +14,23 @@
               (onRowRemoving)="onRowRemoving($event)"
               (onRowUpdated)="onRowUpdated($event)"
               (onRowUpdating)="onRowUpdating($event)"
-              (onSaved)="onSaved($event)"–>
+              (onSaving)="onSaving($event)"–>
 
   <dxo-editing
     mode="popup"
     [allowAdding]="true"
     [allowUpdating]="true"
-    [allowDeleting]="true"
-  >
+    [allowDeleting]="true" >
+
     <dxo-popup title="Clientes" [showTitle]="true" [width]="500" [height]="500">
     </dxo-popup>
+
   </dxo-editing>
   <dxi-column dataField="id" [allowEditing]="false" ></dxi-column>
   <dxi-column dataField="cod" dataType="number">
-    <dxi-validation-rule type="required"></dxi-validation-rule>
+    <dxi-validation-rule type="required" message="Coloque um código válido!"></dxi-validation-rule>
   </dxi-column>
-  <dxi-column dataField="nome" dataType="string">
-    <dxi-validation-rule type="required"></dxi-validation-rule>
+  <dxi-column dataField="cliente" dataType="string">
+    <dxi-validation-rule type="required" message="Coloque um nome válido!"></dxi-validation-rule>
   </dxi-column>
 </dx-data-grid>

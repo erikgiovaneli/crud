@@ -11,7 +11,7 @@ export class NotaService {
   }
 
   getNota(): Observable<Nota[]> {
-    return this.http.get<Nota[]>("/api/Nota");
+    return this.http.get<Nota[]>("/api/nota");
   }
 
   postNota(dados: Nota): Observable<Nota> {
@@ -20,6 +20,10 @@ export class NotaService {
 
   deleteNota(id: number): Observable<any>{
     return this.http.delete<any>('/api/nota/' + id);
+  }
+
+  putNota(dados: Nota): Observable<Nota> {
+    return this.http.put<Nota>('/api/nota', dados);
   }
 
 }

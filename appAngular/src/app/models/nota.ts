@@ -1,9 +1,10 @@
-import dxList from "devextreme/ui/list";
+import {Cliente} from "./cliente";
+import {Item} from "./item";
 
 export class Nota {
-  id!: number | undefined;
-  numero!: string | undefined;
-  //dataCriacao!: Date | undefined;
-  //nome: string | undefined;
-  //itens: dxList | undefined;
+  id: number | undefined;
+  numero: number | undefined;
+  dataCriacao: Date | undefined;
+  cliente: Cliente | undefined;
+  itens: Item[] | undefined;
 }

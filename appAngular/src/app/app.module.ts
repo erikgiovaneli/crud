@@ -13,6 +13,9 @@ import { DxDataGridModule } from 'devextreme-angular';
 import {HttpClientModule} from "@angular/common/http";
 import {ProdutoModule} from "./pages/produto/produto.module";
 import {NotaModule} from "./pages/nota/nota.module";
+import {NotaService} from "./shared/services/nota.service";
+import {ClienteService} from "./shared/services/cliente.service";
+import {ProdutoService} from "./shared/services/produto.service";
 
 @NgModule({
   declarations: [
@@ -36,7 +39,10 @@ import {NotaModule} from "./pages/nota/nota.module";
   providers: [
     AuthService,
     ScreenService,
-    AppInfoService
+    AppInfoService,
+    NotaService,
+    ClienteService,
+    ProdutoService
   ],
   bootstrap: [AppComponent]
 })

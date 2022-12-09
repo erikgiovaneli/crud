@@ -22,7 +22,7 @@ export class ClienteService {
     return this.http.delete<any>('/api/cliente/' + id);
   }
 
-  putCliente(dados: Cliente): Observable<any> {
+  putCliente(dados: Cliente): Observable<Cliente> {
     return this.http.put<Cliente>('/api/cliente', dados);
   }
 }
