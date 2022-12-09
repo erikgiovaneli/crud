@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/ProjetoCRUD.iml" filepath="$PROJECT_DIR$/.idea/ProjetoCRUD.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Nota-Fiscal/Nota-Fiscal.iml" filepath="$PROJECT_DIR$/Nota-Fiscal/Nota-Fiscal.iml" />
+      <module fileurl="file://$PROJECT_DIR$/appAngular/appAngular.iml" filepath="$PROJECT_DIR$/appAngular/appAngular.iml" />
     </modules>
   </component>
 </project>

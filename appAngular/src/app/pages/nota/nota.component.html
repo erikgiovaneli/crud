@@ -2,7 +2,8 @@
   <h3>Tabela de Notas Fiscais</h3>
 </div>
 <br>
-<dx-data-grid [dataSource]="nota" [remoteOperations]="true"
+<dx-data-grid [dataSource]="notas"
+              [remoteOperations]="true"
               [height]="600"
               [showBorders]="true"
               [showColumnLines]="true"
@@ -14,14 +15,14 @@
     [allowUpdating]="true"
     [allowDeleting]="true"
   >
-    <dxo-popup title="Nota Fiscal" [showTitle]="true" [width]="500" [height]="500">
+    <dxo-popup title="Nota Fiscal" [showTitle]="true" width="800px" height="auto">
     </dxo-popup>
 
-    <dxo-form colCount="3">
+    <dxo-form colCount="2">
         <dxi-item dataField="id"></dxi-item>
         <dxi-item dataField="numero"></dxi-item>
         <dxi-item dataField="dataCriacao"></dxi-item>
-        <dxi-item dataField="cliente" editorType="dxSelectBox" editorOptions="{ items: cliente, searchEnabled: true, value: '' }"></dxi-item>
+        <dxi-item dataField="cliente" editorType="dxSelectBox" [editorOptions]="{ items: clientes, searchEnabled: true, displayExpr: 'cliente' }"></dxi-item>
         <dxi-item dataField="itens" [colSpan]="2"></dxi-item>
     </dxo-form>
 
@@ -34,21 +35,32 @@
   <dxi-column dataField="dataCriacao" dataType="date">
     <dxi-validation-rule type="required"></dxi-validation-rule>
   </dxi-column>
-  <dxo-master-detail [enabled]="true" template="detalhes">
-    <dxi-column dataField="cliente" dataType="string">
-      <dxi-validation-rule type="required"></dxi-validation-rule>
-    </dxi-column>
-    <dxi-column dataField="itens" dataType="string" editCellTemplate="itemCellTemplate">
-    </dxi-column>
-  </dxo-master-detail>
+  <dxi-column dataField="cliente" dataType="string">
+    <dxi-validation-rule type="required"></dxi-validation-rule>
+  </dxi-column>
+  <dxi-column dataField="itens" dataType="string" [visible]="false" editCellTemplate="itemEditCellTemplate">
+  </dxi-column>
 
-  <div *dxTemplate="let data of 'itemCellTemplate'" >
-    <dx-data-grid [dataSource]="data.value"></dx-data-grid>
+<!--
+  <div *dxTemplate="let data of 'clienteEditCellTemplate'" >
+    <dx-select-box [items]="clientes"
+                   [searchEnabled] = true
+                   displayExpr = "cod">
+    </dx-select-box>
   </div>
+-->
 
-  <div *dxTemplate="let notas of 'detalhes'">
-    <dx-data-grid [dataSource]="nota" [showBorders]="true" [showColumnLines]="true">
+  <div *dxTemplate="let data of 'itemEditCellTemplate'" >
+    <dx-data-grid [dataSource]="data.value">
+      <dxo-editing
+        mode="row"
+        [allowAdding]="true"
+        [allowUpdating]="true"
+        [allowDeleting]="true"
+      >
+      </dxo-editing>
     </dx-data-grid>
   </div>
+
 
 </dx-data-grid>

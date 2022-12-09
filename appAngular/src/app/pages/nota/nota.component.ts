@@ -3,6 +3,7 @@ import {lastValueFrom} from "rxjs";
 import {Nota} from "../../models/nota";
 import {NotaService} from "../../shared/services/nota.service";
 import {Cliente} from "../../models/cliente";
+import {ClienteService} from "../../shared/services/cliente.service";
 
 @Component({
   selector: 'app-cliente',
@@ -11,16 +12,22 @@ import {Cliente} from "../../models/cliente";
 })
 
 export class NotaComponent {
-  nota: Nota[] = [];
-  carregando = false;
 
-  constructor(private NotaService: NotaService) {
+  notas: Nota[] = [];
+  carregando = false;
+  clientes: Cliente[] = [];
+
+  constructor(private notaService: NotaService,
+              private clienteService: ClienteService) {
 
   }
 
   ngOnInit(){
-    this.NotaService.getNota().subscribe((n)=>{
-      this.nota = n;
+    this.notaService.getNota().subscribe((n)=>{
+      this.notas = n;
+    })
+    this.clienteService.getCliente().subscribe((c)=>{
+      this.clientes = c;
     })
   }
 
@@ -33,7 +40,7 @@ export class NotaComponent {
         }
         else if (i.type === 'update'){
           console.log("Atualizado");
-          let nota$ = await this.NotaService.putNota(i.data as Nota);
+          let nota$ = await this.notaService.putNota(i.data as Nota);
           e.promisse = lastValueFrom(nota$);
         }
         else if (i.type === 'remove'){
@@ -50,7 +57,7 @@ export class NotaComponent {
     this.carregando = true;
     let nota: Nota = new Nota();
     try {
-      let nota$ = this.NotaService.postNota(data);
+      let nota$ = this.notaService.postNota(data);
       return await lastValueFrom(nota$);
     } finally {
       this.carregando = false;
@@ -61,7 +68,7 @@ export class NotaComponent {
   async excluiNota(id: number) {
     this.carregando = true;
     try {
-      let nota$ = this.NotaService.deleteNota(id);
+      let nota$ = this.notaService.deleteNota(id);
       return await lastValueFrom(nota$);
     } finally {
       this.carregando = false;
