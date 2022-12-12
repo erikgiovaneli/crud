@@ -45,7 +45,7 @@
   <div *dxTemplate="let data of 'clienteEditCellTemplate'" >
     <dx-select-box [items]="clientes"
                    [searchEnabled] = true
-                   displayExpr = "cliente">
+                   displayExpr = "nome">
     </dx-select-box>
   </div>
 
@@ -63,6 +63,7 @@
 
       <dxi-column dataField="id" [allowEditing]="false" ></dxi-column>
       <dxi-column dataField="nota">
+        <dxi-validation-rule type="required"></dxi-validation-rule>
       </dxi-column>
       <dxi-column dataField="numero" dataType="number">
         <dxi-validation-rule type="required"></dxi-validation-rule>
