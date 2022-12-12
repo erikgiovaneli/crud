@@ -37,24 +37,23 @@ export class NotaComponent {
   }
 
   async onSaved(e: any) {
-    console.log("onSaving");
+    console.log("onSaved");
     if(e.changes && e.changes.length > 0){
-      for (let i of e.changes) {
-        if (i.type === 'insert'){
-          e.promisse = await this.adicionaNota(i.data as Nota);
+      for (let item of e.changes) {
+        if (item.type === 'insert'){
+          e.promisse = await this.adicionaNota(item.data as Nota);
         }
-        else if (i.type === 'update'){
+        else if (item.type === 'update'){
           console.log("Atualizado");
-          let nota$ = await this.notaService.putNota(i.data as Nota);
+          let nota$ = await this.notaService.putNota(item.data as Nota);
           e.promisse = lastValueFrom(nota$);
         }
-        else if (i.type === 'remove'){
+        else if (item.type === 'remove'){
           console.log("Deletado");
-          e.promisse = await this.excluiNota(i.key.id);
+          e.promisse = await this.excluiNota(item.key.id);
         }
       }
     }
-
 
   }
 

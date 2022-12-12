@@ -35,12 +35,13 @@
   <dxi-column dataField="dataCriacao" dataType="date">
     <dxi-validation-rule type="required"></dxi-validation-rule>
   </dxi-column>
-  <dxi-column dataField="nome"  dataType="string" editCellTemplate="clienteEditCellTemplate">
+  <dxi-column dataField="nome"  dataType="string" cellTemplate="clienteCellTemplate" editCellTemplate="clienteEditCellTemplate">
     <dxi-validation-rule type="required"></dxi-validation-rule>
   </dxi-column>
   <dxi-column dataField="itens" dataType="string" [visible]="false" editCellTemplate="itemEditCellTemplate">
   </dxi-column>
 
+  <div *dxTemplate="let data of 'clienteCellTemplate'">{{data.value ? data.value.nome : " "}}</div>
 
   <div *dxTemplate="let data of 'clienteEditCellTemplate'" >
     <dx-select-box [items]="clientes"
@@ -68,13 +69,15 @@
       <dxi-column dataField="numero" dataType="number">
         <dxi-validation-rule type="required"></dxi-validation-rule>
       </dxi-column>
-      <dxi-column dataField="produto" dataType="string">
+      <dxi-column dataField="produto" cellTemplate="produtoCellTemplate" dataType="string">
         <dxi-validation-rule type="required"></dxi-validation-rule>
       </dxi-column>
       <dxi-column dataField="quantidade" dataType="number" >
       </dxi-column>
       <dxi-column dataField="valortotal" dataType="number" >
       </dxi-column>
+
+      <div *dxTemplate="let data of 'produtoCellTemplate'"> {{data.value ? data.value.descricao : " "}} </div>
     </dx-data-grid>
   </div>
 
