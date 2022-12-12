@@ -4,6 +4,7 @@ import {Nota} from "../../models/nota";
 import {NotaService} from "../../shared/services/nota.service";
 import {Cliente} from "../../models/cliente";
 import {ClienteService} from "../../shared/services/cliente.service";
+import {Item} from "../../models/item";
 
 @Component({
   selector: 'app-cliente',
@@ -16,6 +17,7 @@ export class NotaComponent {
   notas: Nota[] = [];
   carregando = false;
   clientes: Cliente[] = [];
+  itens: Item[] = [];
 
   constructor(private notaService: NotaService,
               private clienteService: ClienteService) {
@@ -28,6 +30,9 @@ export class NotaComponent {
     })
     this.clienteService.getCliente().subscribe((c)=>{
       this.clientes = c;
+    })
+    this.notaService.getItem().subscribe((i)=>{
+      this.itens = i;
     })
   }
 

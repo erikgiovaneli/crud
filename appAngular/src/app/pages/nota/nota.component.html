@@ -22,7 +22,7 @@
         <dxi-item dataField="id"></dxi-item>
         <dxi-item dataField="numero"></dxi-item>
         <dxi-item dataField="dataCriacao"></dxi-item>
-        <dxi-item dataField="cliente" editorType="dxSelectBox" [editorOptions]="{ items: clientes, searchEnabled: true, displayExpr: 'cliente' }"></dxi-item>
+        <dxi-item dataField="nome" ></dxi-item>
         <dxi-item dataField="itens" [colSpan]="2"></dxi-item>
     </dxo-form>
 
@@ -35,23 +35,24 @@
   <dxi-column dataField="dataCriacao" dataType="date">
     <dxi-validation-rule type="required"></dxi-validation-rule>
   </dxi-column>
-  <dxi-column dataField="cliente" dataType="string">
+  <dxi-column dataField="nome"  dataType="string" editCellTemplate="clienteEditCellTemplate">
     <dxi-validation-rule type="required"></dxi-validation-rule>
   </dxi-column>
   <dxi-column dataField="itens" dataType="string" [visible]="false" editCellTemplate="itemEditCellTemplate">
   </dxi-column>
 
-<!--
+
   <div *dxTemplate="let data of 'clienteEditCellTemplate'" >
     <dx-select-box [items]="clientes"
                    [searchEnabled] = true
-                   displayExpr = "cod">
+                   displayExpr = "cliente">
     </dx-select-box>
   </div>
--->
+
 
   <div *dxTemplate="let data of 'itemEditCellTemplate'" >
     <dx-data-grid [dataSource]="data.value">
+
       <dxo-editing
         mode="row"
         [allowAdding]="true"
@@ -59,6 +60,20 @@
         [allowDeleting]="true"
       >
       </dxo-editing>
+
+      <dxi-column dataField="id" [allowEditing]="false" ></dxi-column>
+      <dxi-column dataField="nota">
+      </dxi-column>
+      <dxi-column dataField="numero" dataType="number">
+        <dxi-validation-rule type="required"></dxi-validation-rule>
+      </dxi-column>
+      <dxi-column dataField="produto" dataType="string">
+        <dxi-validation-rule type="required"></dxi-validation-rule>
+      </dxi-column>
+      <dxi-column dataField="quantidade" dataType="number" >
+      </dxi-column>
+      <dxi-column dataField="valortotal" dataType="number" >
+      </dxi-column>
     </dx-data-grid>
   </div>
 

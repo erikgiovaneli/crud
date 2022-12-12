@@ -18,7 +18,7 @@ public class Cliente {
 	@NotNull @NotEmpty
 	private String cod;
 	@NotNull @NotEmpty
-	private String cliente;
+	private String nome;
 	
 
 	public Long getId() {
@@ -37,12 +37,12 @@ public class Cliente {
 		this.cod = cod;
 	}
 
-	public String getCliente() {
-		return cliente;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setCliente(String cliente) {
-		this.cliente = cliente;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 }

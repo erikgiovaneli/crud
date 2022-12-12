@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Nota} from "../../models/nota";
 import {Cliente} from "../../models/cliente";
+import {Item} from "../../models/item";
 
 @Injectable()
 export class NotaService {
@@ -24,6 +25,22 @@ export class NotaService {
 
   putNota(dados: Nota): Observable<Nota> {
     return this.http.put<Nota>('/api/nota', dados);
+  }
+
+  getItem(): Observable<Item[]> {
+    return this.http.get<Item[]>("/api/item");
+  }
+
+  postItem(dados: Item): Observable<Item> {
+    return this.http.post<Item>('/api/item', dados);
+  }
+
+  deleteItem(id: number): Observable<any>{
+    return this.http.delete<any>('/api/item/' + id);
+  }
+
+  putItem(dados: Item): Observable<Item> {
+    return this.http.put<Item>('/api/item', dados);
   }
 
 }

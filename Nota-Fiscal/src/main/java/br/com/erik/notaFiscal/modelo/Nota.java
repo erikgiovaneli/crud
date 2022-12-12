@@ -22,7 +22,7 @@ public class Nota {
 	@NotNull @NotEmpty
 	private Date dataCriacao;
 	@ManyToOne
-	private Cliente cliente;
+	private Cliente nome;
 	@OneToMany(mappedBy="nota", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Item> itens;
 	
@@ -45,11 +45,11 @@ public class Nota {
 	public void setDataCriacao(Date dataCriacao) {
 		this.dataCriacao = dataCriacao;
 	}
-	public Cliente getCliente() {
-		return cliente;
+	public Cliente getNome() {
+		return nome;
 	}
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
+	public void setNome(Cliente nome) {
+		this.nome = nome;
 	}
 	public List<Item> getItens() {
 		return itens;
