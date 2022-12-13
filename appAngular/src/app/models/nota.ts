@@ -5,6 +5,6 @@ export class Nota {
   id: number | undefined;
   numero: number | undefined;
   dataCriacao: Date | undefined;
-  nome: Cliente | undefined;
+  cliente: Cliente | undefined;
   itens: Item[] | undefined;
 }

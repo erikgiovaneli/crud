@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import {ReactiveFormsModule} from "@angular/forms";
 import {DevExtremeModule} from "devextreme-angular";
 import {NotaComponent} from "./nota.component";
+import {FirstKeysToConsoleModule} from "../../shared/pipes/value-data-to-console.pipe";
 
 
 
@@ -11,10 +12,11 @@ import {NotaComponent} from "./nota.component";
   exports: [
     NotaComponent
   ],
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    DevExtremeModule
-  ]
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        DevExtremeModule,
+        FirstKeysToConsoleModule
+    ]
 })
 export class NotaModule { }

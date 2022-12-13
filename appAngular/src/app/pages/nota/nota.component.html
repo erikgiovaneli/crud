@@ -3,7 +3,6 @@
 </div>
 <br>
 <dx-data-grid [dataSource]="notas"
-              [remoteOperations]="true"
               [height]="600"
               [showBorders]="true"
               [showColumnLines]="true"
@@ -22,7 +21,7 @@
         <dxi-item dataField="id"></dxi-item>
         <dxi-item dataField="numero"></dxi-item>
         <dxi-item dataField="dataCriacao"></dxi-item>
-        <dxi-item dataField="nome" ></dxi-item>
+        <dxi-item dataField="cliente" ></dxi-item>
         <dxi-item dataField="itens" [colSpan]="2"></dxi-item>
     </dxo-form>
 
@@ -35,18 +34,23 @@
   <dxi-column dataField="dataCriacao" dataType="date">
     <dxi-validation-rule type="required"></dxi-validation-rule>
   </dxi-column>
-  <dxi-column dataField="nome"  dataType="string" cellTemplate="clienteCellTemplate" editCellTemplate="clienteEditCellTemplate">
+  <dxi-column dataField="cliente" cellTemplate="clienteCellTemplate" editCellTemplate="clienteEditCellTemplate">
     <dxi-validation-rule type="required"></dxi-validation-rule>
   </dxi-column>
-  <dxi-column dataField="itens" dataType="string" [visible]="false" editCellTemplate="itemEditCellTemplate">
+  <dxi-column dataField="itens" [visible]="false" editCellTemplate="itemEditCellTemplate">
   </dxi-column>
 
-  <div *dxTemplate="let data of 'clienteCellTemplate'">{{data.value ? data.value.nome : " "}}</div>
+  <div *dxTemplate="let data of 'clienteCellTemplate'">{{data.value ? data.value.nome : ""}}</div>
 
   <div *dxTemplate="let data of 'clienteEditCellTemplate'" >
-    <dx-select-box [items]="clientes"
-                   [searchEnabled] = true
-                   displayExpr = "nome">
+    {{data | valueDataToConsolePipe}}
+    <dx-select-box
+      valueExpr="id"
+      [value]="data.value.id"
+      (valueChange)="getValorClienteGrid($event, data)"
+      [items]="clientes"
+      [searchEnabled] = false
+      displayExpr = "nome">
     </dx-select-box>
   </div>
 

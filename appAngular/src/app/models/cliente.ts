@@ -1,5 +1,10 @@
 export class Cliente {
-  id: number | undefined;
-  cod: string | undefined;
-  nome: string | undefined;
+
+  constructor() {
+  }
+
+  id!: number;
+  cod!: string;
+  nome!: string;
+
 }

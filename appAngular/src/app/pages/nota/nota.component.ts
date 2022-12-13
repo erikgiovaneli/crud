@@ -28,8 +28,11 @@ export class NotaComponent {
     this.notaService.getNota().subscribe((n)=>{
       this.notas = n;
     })
-    this.clienteService.getCliente().subscribe((c)=>{
-      this.clientes = c;
+    this.clienteService.getCliente().subscribe((clientes)=>{
+      for (let c of clientes) {
+        this.clientes.push(c as Cliente);
+      }
+
     })
     this.notaService.getItem().subscribe((i)=>{
       this.itens = i;
@@ -79,4 +82,13 @@ export class NotaComponent {
     }
   }
 
+  getValorClienteGrid(id: number, data: any) {
+    for (let c of this.clientes) {
+      if(c.id==id){
+        data.setValue(c as Cliente);
+        break;
+      }
+    }
+
+  }
 }
