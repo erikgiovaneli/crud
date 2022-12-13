@@ -45,8 +45,8 @@ export class NotaComponent {
         }
         else if (item.type === 'update'){
           console.log("Atualizado");
-          let nota$ = await this.notaService.putNota(item.data as Nota);
-          e.promisse = lastValueFrom(nota$);
+          // let nota$ = await this.notaService.putNota(item.data as Nota);
+          // e.promisse = lastValueFrom(nota$);
         }
         else if (item.type === 'remove'){
           console.log("Deletado");

@@ -31,17 +31,5 @@ export class NotaService {
     return this.http.get<Item[]>("/api/item");
   }
 
-  postItem(dados: Item): Observable<Item> {
-    return this.http.post<Item>('/api/item', dados);
-  }
-
-  deleteItem(id: number): Observable<any>{
-    return this.http.delete<any>('/api/item/' + id);
-  }
-
-  putItem(dados: Item): Observable<Item> {
-    return this.http.put<Item>('/api/item', dados);
-  }
-
 }
 
