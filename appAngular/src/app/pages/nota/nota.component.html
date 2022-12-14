@@ -43,10 +43,9 @@
   <div *dxTemplate="let data of 'clienteCellTemplate'">{{data.value ? data.value.nome : ""}}</div>
 
   <div *dxTemplate="let data of 'clienteEditCellTemplate'" >
-    {{data | valueDataToConsolePipe}}
     <dx-select-box
       valueExpr="id"
-      [value]="data.value.id"
+      [value]="data.value?.id"
       (valueChange)="getValorClienteGrid($event, data)"
       [items]="clientes"
       [searchEnabled] = false
@@ -66,6 +65,19 @@
         [allowUpdating]="true"
         [allowDeleting]="true"
       >
+        <dxo-form>
+          <dxi-item dataField="id"></dxi-item>
+
+          <dxi-item dataField="nota"></dxi-item>
+
+          <dxi-item dataField="numero"></dxi-item>
+
+          <dxi-item dataField="produto"></dxi-item>
+
+          <dxi-item dataField="quantidade"></dxi-item>
+
+          <dxi-item dataField="valortotal"></dxi-item>
+        </dxo-form>
       </dxo-editing>
 
       <dxi-column dataField="id" [allowEditing]="false" [visible]="false"></dxi-column>
@@ -83,16 +95,15 @@
       <dxi-column dataField="valortotal" dataType="number" >
       </dxi-column>
 
-      <div *dxTemplate="let data of 'produtoCellTemplate'"> {{data.value ? data.value.descricao : " "}} </div>
+      <div *dxTemplate="let data1 of 'produtoCellTemplate'"> {{data1.value ? data1.value.descricao : ""}} </div>
       </dx-data-grid>
 
-      <div *dxTemplate="let data of 'produtoEditCellTemplate'">
+      <div *dxTemplate="let data2 of 'produtoEditCellTemplate'">
         <dx-select-box
-          valueExpr="id"
-          [value]="data.value.id"
-          [items]="produtos"
-          [searchEnabled] = false
-          [displayExpr] = "data.descricao" >
+          valueExpr= "id"
+          [value]= "data2.value?.id"
+          [items]= "produtos"
+          displayExpr = "descricao" >
         </dx-select-box>
       </div>
 
