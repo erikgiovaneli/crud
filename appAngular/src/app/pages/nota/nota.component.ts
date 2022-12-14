@@ -5,6 +5,8 @@ import {NotaService} from "../../shared/services/nota.service";
 import {Cliente} from "../../models/cliente";
 import {ClienteService} from "../../shared/services/cliente.service";
 import {Item} from "../../models/item";
+import {ProdutoService} from "../../shared/services/produto.service";
+import {Produto} from "../../models/produto";
 
 @Component({
   selector: 'app-cliente',
@@ -18,9 +20,11 @@ export class NotaComponent {
   carregando = false;
   clientes: Cliente[] = [];
   itens: Item[] = [];
+  produtos: Produto[] = [];
 
   constructor(private notaService: NotaService,
-              private clienteService: ClienteService) {
+              private clienteService: ClienteService,
+              private produtoService: ProdutoService) {
 
   }
 
@@ -28,14 +32,19 @@ export class NotaComponent {
     this.notaService.getNota().subscribe((n)=>{
       this.notas = n;
     })
+
     this.clienteService.getCliente().subscribe((clientes)=>{
       for (let c of clientes) {
         this.clientes.push(c as Cliente);
       }
-
     })
+
     this.notaService.getItem().subscribe((i)=>{
       this.itens = i;
+    })
+
+    this.produtoService.getProduto().subscribe((p)=>{
+      this.produtos = p;
     })
   }
 

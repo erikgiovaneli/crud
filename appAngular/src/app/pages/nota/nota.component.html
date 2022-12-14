@@ -56,7 +56,9 @@
 
 
   <div *dxTemplate="let data of 'itemEditCellTemplate'" >
-    <dx-data-grid [dataSource]="data.value">
+    <dx-data-grid [dataSource]="data.value"
+                  [showBorders]="true"
+                  [showColumnLines]="true" >
 
       <dxo-editing
         mode="row"
@@ -66,14 +68,14 @@
       >
       </dxo-editing>
 
-      <dxi-column dataField="id" [allowEditing]="false" ></dxi-column>
-      <dxi-column dataField="nota" [allowEditing]="false" >
+      <dxi-column dataField="id" [allowEditing]="false" [visible]="false"></dxi-column>
+      <dxi-column dataField="nota" >
         <dxi-validation-rule type="required"></dxi-validation-rule>
       </dxi-column>
       <dxi-column dataField="numero" dataType="number">
         <dxi-validation-rule type="required"></dxi-validation-rule>
       </dxi-column>
-      <dxi-column dataField="produto" cellTemplate="produtoCellTemplate" dataType="string">
+      <dxi-column dataField="produto" cellTemplate="produtoCellTemplate" editCellTemplate="produtoEditCellTemplate">
         <dxi-validation-rule type="required"></dxi-validation-rule>
       </dxi-column>
       <dxi-column dataField="quantidade" dataType="number" >
@@ -82,7 +84,18 @@
       </dxi-column>
 
       <div *dxTemplate="let data of 'produtoCellTemplate'"> {{data.value ? data.value.descricao : " "}} </div>
-    </dx-data-grid>
+      </dx-data-grid>
+
+      <div *dxTemplate="let data of 'produtoEditCellTemplate'">
+        <dx-select-box
+          valueExpr="id"
+          [value]="data.value.id"
+          [items]="produtos"
+          [searchEnabled] = false
+          [displayExpr] = "data.descricao" >
+        </dx-select-box>
+      </div>
+
   </div>
 
 
