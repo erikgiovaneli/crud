@@ -21,7 +21,7 @@ public class Nota {
 	@NotNull @NotEmpty
 	private String numero;
 
-	@NotNull @NotEmpty
+	@NotNull
 	private Date dataCriacao;
 
 	@ManyToOne

@@ -17,8 +17,6 @@ export class ValueDataToConsolePipe implements PipeTransform {
 
 }
 
-
-
 @NgModule({
   imports: [
   ],
