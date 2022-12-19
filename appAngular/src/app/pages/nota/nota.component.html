@@ -12,8 +12,8 @@
     mode="popup"
     [allowAdding]="true"
     [allowUpdating]="true"
-    [allowDeleting]="true"
-  >
+    [allowDeleting]="true">
+
     <dxo-popup title="Nota Fiscal" [showTitle]="true" width="800px" height="auto">
     </dxo-popup>
 
@@ -24,7 +24,6 @@
         <dxi-item dataField="cliente" ></dxi-item>
         <dxi-item dataField="itens" [colSpan]="2"></dxi-item>
     </dxo-form>
-
   </dxo-editing>
 
   <dxi-column dataField="id" [allowEditing]="false" ></dxi-column>
@@ -54,7 +53,6 @@
 
 
   <div *dxTemplate="let data of 'itemEditCellTemplate'" >
-    {{data | valueDataToConsolePipe}}
     <dx-data-grid [dataSource]="data.value"
                   [showBorders]="true"
                   [showColumnLines]="true" >
@@ -63,30 +61,23 @@
         mode="row"
         [allowAdding]="true"
         [allowUpdating]="true"
-        [allowDeleting]="true"
-      >
-        <dxo-form>
-          <dxi-item dataField="id"></dxi-item>
-          <dxi-item dataField="nota"></dxi-item>
-          <dxi-item dataField="numero"></dxi-item>
-          <dxi-item dataField="produto"></dxi-item>
-          <dxi-item dataField="quantidade"></dxi-item>
-          <dxi-item dataField="valortotal"></dxi-item>
-        </dxo-form>
+        [allowDeleting]="true">
       </dxo-editing>
 
       <dxi-column dataField="id" [allowEditing]="false" [visible]="false"></dxi-column>
       <dxi-column dataField="nota" >
         <dxi-validation-rule type="required"></dxi-validation-rule>
       </dxi-column>
-      <dxi-column dataField="numero" dataType="number">
+      <dxi-column dataField="numero" dataType="string">
         <dxi-validation-rule type="required"></dxi-validation-rule>
       </dxi-column>
       <dxi-column dataField="produto" cellTemplate="produtoCellTemplate" editCellTemplate="produtoEditCellTemplate">
       </dxi-column>
       <dxi-column dataField="quantidade" dataType="number" >
+        <dxi-validation-rule type="required"></dxi-validation-rule>
       </dxi-column>
-      <dxi-column dataField="valortotal" dataType="number" >
+      <dxi-column dataField="valortotal" dataType="number">
+        <dxi-validation-rule type="required"></dxi-validation-rule>
       </dxi-column>
 
       <div *dxTemplate="let data1 of 'produtoCellTemplate'"> {{data1.value ? data1.value.descricao : ""}} </div>

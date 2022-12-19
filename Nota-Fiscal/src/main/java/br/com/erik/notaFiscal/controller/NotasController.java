@@ -42,11 +42,16 @@ public class NotasController {
 		return ResponseEntity.created(uri).body(nota);
 	}
 	
-	@PutMapping
-	public Nota atualizaNota(@RequestBody Nota nota) {
-		return notaRepository.save(nota);
+	@PutMapping("/{id}")
+	@Transactional
+	public ResponseEntity<Nota> atualizaNota( @PathVariable Long id, @RequestBody Nota nota) {
+		Optional<Nota> nota1 = notaRepository.findById(id);
+		if(nota1.isPresent()) {
+			notaRepository.save(nota);
+			return ResponseEntity.ok().build();
+		}
+		return ResponseEntity.notFound().build();
 	}
-	
 	@DeleteMapping("/{id}")
 	@Transactional
 	public ResponseEntity<?> deletaNota(@PathVariable Long id) {

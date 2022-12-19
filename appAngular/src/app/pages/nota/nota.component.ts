@@ -57,9 +57,9 @@ export class NotaComponent {
         }
         else if (item.type === 'update'){
           console.log("Atualizado");
-          console.log(item.data);
-          console.log(item.data.id);
-          e.promisse = await this.atualizaNota(item.data as Nota);
+          let nota1$ = this.notaService.putNota(item.data, item.data.id);
+          e.promisse = await lastValueFrom(nota1$);
+          //e.promisse = await this.atualizaNota(item.data.id,item.data as Nota);
         }
         else if (item.type === 'remove'){
           console.log("Deletado");
@@ -82,17 +82,18 @@ export class NotaComponent {
     return nota;
   }
 
-  async atualizaNota(data: Nota) {
-    this.carregando = true;
-    let nota = data;
-    try {
-      let nota$ = this.notaService.putNota(data);
-      return await lastValueFrom(nota$);
-    } finally {
-      this.carregando = false;
-    }
-    return nota;
-  }
+  // async atualizaNota(data: Nota, id: number) {
+  //   this.carregando = true;
+  //   let nota1 = data;
+  //   try {
+  //     let nota1$ = this.notaService.putNota(data, id);
+  //     return await lastValueFrom(nota1$);
+  //   } finally {
+  //     console.log(nota1);
+  //     this.carregando = false;
+  //   }
+  //   return nota1;
+  // }
 
   async excluiNota(id: number) {
     this.carregando = true;
