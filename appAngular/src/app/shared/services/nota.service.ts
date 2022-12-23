@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Nota} from "../../models/nota";
-import {Cliente} from "../../models/cliente";
 import {Item} from "../../models/item";
 
 @Injectable()
@@ -24,7 +23,7 @@ export class NotaService {
   }
 
   putNota(dados: Nota, id: number): Observable<Nota> {
-    return this.http.put<Nota>('/api/nota/'+ id, dados);
+    return this.http.put<Nota>('/api/nota/' + id, dados);
   }
 
   getItem(): Observable<Item[]> {

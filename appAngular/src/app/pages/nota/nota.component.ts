@@ -57,7 +57,7 @@ export class NotaComponent {
         }
         else if (item.type === 'update'){
           console.log("Atualizado");
-          let nota1$ = this.notaService.putNota(item.data, item.data.id);
+          let nota1$ = this.notaService.putNota(item.key, item.key.id);
           e.promisse = await lastValueFrom(nota1$);
           //e.promisse = await this.atualizaNota(item.data.id,item.data as Nota);
         }

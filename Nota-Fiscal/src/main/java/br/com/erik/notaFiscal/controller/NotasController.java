@@ -52,6 +52,7 @@ public class NotasController {
 		}
 		return ResponseEntity.notFound().build();
 	}
+
 	@DeleteMapping("/{id}")
 	@Transactional
 	public ResponseEntity<?> deletaNota(@PathVariable Long id) {
