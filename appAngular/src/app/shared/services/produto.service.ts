@@ -21,7 +21,7 @@ export class ProdutoService {
     return this.http.delete<any>('/api/produto/' + id);
   }
 
-  putProduto(dados: Produto): Observable<any> {
+  putProduto(dados: Produto): Observable<Produto> {
     return this.http.put<Produto>('/api/produto', dados);
   }
 

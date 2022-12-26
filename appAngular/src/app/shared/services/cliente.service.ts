@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Cliente} from "../../models/cliente";
-import DevExpress from "devextreme";
 
 @Injectable()
 export class ClienteService {

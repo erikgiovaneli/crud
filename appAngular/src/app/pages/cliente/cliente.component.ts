@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {ClienteService} from "../../shared/services/cliente.service";
 import {Cliente} from "../../models/cliente";
 import {lastValueFrom} from "rxjs";
-import DevExpress from "devextreme";
-import applyChanges = DevExpress.data.applyChanges;
 
 @Component({
   selector: 'app-cliente',

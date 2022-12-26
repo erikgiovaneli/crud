@@ -34,7 +34,8 @@ export class ProdutoComponent {
           e.promisse = await this.adicionaProduto(i.data as Produto);
         }
         else if (i.type === 'update'){
-          //e.promisse = await this.atualizaCliente(i.data as Produto);
+          let produto$ = await this.ProdutoService.putProduto(i.data as Produto);
+          e.promisse = lastValueFrom(produto$);
         }
         else if (i.type === 'remove'){
           e.promisse = await this.excluiProduto(i.key.id);
