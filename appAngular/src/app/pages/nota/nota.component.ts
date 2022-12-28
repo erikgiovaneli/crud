@@ -48,18 +48,22 @@ export class NotaComponent {
     })
   }
 
+  onInitNewRow(e: any) {
+    e.data.itens = [];
+  }
+
   async onSaved(e: any) {
     console.log("onSaved");
     if(e.changes && e.changes.length > 0){
       for (let item of e.changes) {
         if (item.type === 'insert'){
-          e.promisse = await this.adicionaNota(item.data as Nota);
+          console.log(item.key);
+          e.promisse = await this.adicionaNota(item.key as Nota);
         }
         else if (item.type === 'update'){
           console.log("Atualizado");
-          let nota1$ = this.notaService.putNota(item.key, item.key.id);
+          let nota1$ = this.notaService.putNota(item.key);
           e.promisse = await lastValueFrom(nota1$);
-          //e.promisse = await this.atualizaNota(item.data.id,item.data as Nota);
         }
         else if (item.type === 'remove'){
           console.log("Deletado");
@@ -109,6 +113,15 @@ export class NotaComponent {
     for (let c of this.clientes) {
       if(c.id==id){
         data.setValue(c as Cliente);
+        break;
+      }
+    }
+  }
+
+  getValorProdutoGrid(id: number, data: any) {
+    for (let p of this.produtos) {
+      if(p.id==id){
+        data.setValue(p as Produto);
         break;
       }
     }

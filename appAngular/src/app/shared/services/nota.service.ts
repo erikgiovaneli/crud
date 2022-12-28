@@ -22,8 +22,8 @@ export class NotaService {
     return this.http.delete<any>('/api/nota/' + id);
   }
 
-  putNota(dados: Nota, id: number): Observable<Nota> {
-    return this.http.put<Nota>('/api/nota/' + id, dados);
+  putNota(dados: Nota): Observable<Nota> {
+    return this.http.put<Nota>('/api/nota', dados);
   }
 
   getItem(): Observable<Item[]> {

@@ -6,6 +6,7 @@
               [height]="600"
               [showBorders]="true"
               [showColumnLines]="true"
+              (onInitNewRow)="onInitNewRow($event)"
               (onSaved)="onSaved($event)">
 
 
@@ -65,9 +66,17 @@
         [allowDeleting]="true">
       </dxo-editing>
 
+      <dxo-form>
+        <dxi-item dataField="id"></dxi-item>
+        <dxi-item dataField="nota"></dxi-item>
+        <dxi-item dataField="numero"></dxi-item>
+        <dxi-item dataField="produto"></dxi-item>
+        <dxi-item dataField="quantidade"></dxi-item>
+        <dxi-item dataField="valortotal"></dxi-item>
+      </dxo-form>
+
       <dxi-column dataField="id" [allowEditing]="false" [visible]="false"></dxi-column>
-      <dxi-column dataField="nota" >
-        <dxi-validation-rule type="required"></dxi-validation-rule>
+      <dxi-column dataField="nota">
       </dxi-column>
       <dxi-column dataField="numero" dataType="string">
         <dxi-validation-rule type="required"></dxi-validation-rule>
@@ -88,6 +97,7 @@
           valueExpr= "id"
           [value]= "data2.value?.id"
           [items]= "produtos"
+          (valueChange)="getValorProdutoGrid($event, data)"
           displayExpr = "descricao" >
         </dx-select-box>
       </div>
