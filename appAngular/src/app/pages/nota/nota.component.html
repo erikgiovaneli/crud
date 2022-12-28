@@ -8,6 +8,7 @@
               [showColumnLines]="true"
               (onSaved)="onSaved($event)">
 
+
   <dxo-editing
     mode="popup"
     [allowAdding]="true"
@@ -55,7 +56,7 @@
   <div *dxTemplate="let data of 'itemEditCellTemplate'" >
     <dx-data-grid [dataSource]="data.value"
                   [showBorders]="true"
-                  [showColumnLines]="true" >
+                  [showColumnLines]="true">
 
       <dxo-editing
         mode="row"
