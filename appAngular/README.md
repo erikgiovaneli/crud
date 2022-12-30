@@ -1,10 +1,14 @@
-# AppAngular
+# Projeto CRUD com Angular e Spring Boot
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.6.
+Esse projeto foi desenvolvido com [Angular CLI](https://github.com/angular/angular-cli) versão 14.2.6.
 
-## Development server
+## Front-End Angular
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Use `ng serve --proxy-config proxy.conf.js` para começar o servidor. Utilize no seu navegador o `http://localhost:4200/`.
+
+## Servidor Back-End
+
+Abra no seu editor de programação e ligue o servidor. Utilizará o `http://localhost:8080/`.
 
 ## Code scaffolding
 
