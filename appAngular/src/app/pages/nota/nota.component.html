@@ -20,15 +20,14 @@
     </dxo-popup>
 
     <dxo-form colCount="2">
-        <dxi-item dataField="id"></dxi-item>
         <dxi-item dataField="numero"></dxi-item>
         <dxi-item dataField="dataCriacao"></dxi-item>
         <dxi-item dataField="cliente" ></dxi-item>
+        <dxi-item itemType="empty"></dxi-item>
         <dxi-item dataField="itens" [colSpan]="2"></dxi-item>
     </dxo-form>
   </dxo-editing>
 
-  <dxi-column dataField="id" [allowEditing]="false" ></dxi-column>
   <dxi-column dataField="numero" dataType="number">
     <dxi-validation-rule type="required"></dxi-validation-rule>
   </dxi-column>
@@ -67,17 +66,12 @@
       </dxo-editing>
 
       <dxo-form>
-        <dxi-item dataField="id"></dxi-item>
-        <dxi-item dataField="nota"></dxi-item>
         <dxi-item dataField="numero"></dxi-item>
         <dxi-item dataField="produto"></dxi-item>
         <dxi-item dataField="quantidade"></dxi-item>
         <dxi-item dataField="valortotal"></dxi-item>
       </dxo-form>
 
-      <dxi-column dataField="id" [allowEditing]="false" [visible]="false"></dxi-column>
-      <dxi-column dataField="nota">
-      </dxi-column>
       <dxi-column dataField="numero" dataType="string">
         <dxi-validation-rule type="required"></dxi-validation-rule>
       </dxi-column>
