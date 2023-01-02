@@ -7,6 +7,7 @@ import java.util.Optional;
 
 import javax.transaction.Transactional;
 
+import br.com.erik.notaFiscal.modelo.Item;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -30,6 +31,10 @@ public class NotasController {
 	
 	@PostMapping
 	public ResponseEntity<Nota> cadastrar(@RequestBody Nota nota, UriComponentsBuilder uriBuilder){
+		for (Item iten : nota.getItens()) {
+			iten.setNota(nota);
+		}
+
 		nota = notaRepository.save(nota);
 		URI uri = uriBuilder.path("/nota/{id}").buildAndExpand(nota.getId()).toUri();
 		return ResponseEntity.created(uri).body(nota);

@@ -49,16 +49,19 @@ export class NotaComponent {
   }
 
   onInitNewRow(e: any) {
-    e.data.itens = [];
+    if(!e.data.itens) {
+      e.data.itens = [];
+    }
   }
 
   async onSaved(e: any) {
-    console.log("onSaved");
+    // console.log("onSaved");
     if(e.changes && e.changes.length > 0){
       for (let item of e.changes) {
         if (item.type === 'insert'){
-          console.log(item.key);
-          e.promisse = await this.adicionaNota(item.key as Nota);
+          // console.log(item.key);
+          e.promisse = this.adicionaNota(item.data as Nota);
+
         }
         else if (item.type === 'update'){
           console.log("Atualizado");
@@ -76,14 +79,14 @@ export class NotaComponent {
 
   async adicionaNota(data: Nota) {
     this.carregando = true;
-    let nota: Nota = new Nota();
+    // let nota: Nota = new Nota();
     try {
       let nota$ = this.notaService.postNota(data);
       return await lastValueFrom(nota$);
     } finally {
       this.carregando = false;
     }
-    return nota;
+    return null;
   }
 
   // async atualizaNota(data: Nota, id: number) {
@@ -99,11 +102,11 @@ export class NotaComponent {
   //   return nota1;
   // }
 
-  async excluiNota(id: number) {
+  excluiNota(id: number) {
     this.carregando = true;
     try {
       let nota$ = this.notaService.deleteNota(id);
-      return await lastValueFrom(nota$);
+      return lastValueFrom(nota$);
     } finally {
       this.carregando = false;
     }

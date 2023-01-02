@@ -54,7 +54,7 @@
 
 
   <div *dxTemplate="let data of 'itemEditCellTemplate'" >
-    <dx-data-grid [dataSource]="data.value"
+    <dx-data-grid [(dataSource)]="data.value"
                   [showBorders]="true"
                   [showColumnLines]="true">
 
@@ -69,7 +69,7 @@
         <dxi-item dataField="numero"></dxi-item>
         <dxi-item dataField="produto"></dxi-item>
         <dxi-item dataField="quantidade"></dxi-item>
-        <dxi-item dataField="valortotal"></dxi-item>
+        <dxi-item dataField="valorItem"></dxi-item>
       </dxo-form>
 
       <dxi-column dataField="numero" dataType="string">
@@ -80,7 +80,7 @@
       <dxi-column dataField="quantidade" dataType="number" >
         <dxi-validation-rule type="required"></dxi-validation-rule>
       </dxi-column>
-      <dxi-column dataField="valortotal" dataType="number">
+      <dxi-column dataField="valorItem" dataType="number">
         <dxi-validation-rule type="required"></dxi-validation-rule>
       </dxi-column>
 
@@ -91,7 +91,7 @@
           valueExpr= "id"
           [value]= "data2.value?.id"
           [items]= "produtos"
-          (valueChange)="getValorProdutoGrid($event, data)"
+          (valueChange)="getValorProdutoGrid($event, data2)"
           displayExpr = "descricao" >
         </dx-select-box>
       </div>

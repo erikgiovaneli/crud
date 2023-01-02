@@ -20,13 +20,13 @@ public class Item {
 	@ManyToOne
 	private Nota nota;
 	@NotNull 
-	private BigDecimal numero;
+	private Integer numero;
 	@ManyToOne
 	private Produto produto;
 	@NotNull 
 	private BigDecimal quantidade;
 	@NotNull 
-	private BigDecimal valortotal;
+	private BigDecimal valorItem;
 
 	public Long getId() {
 		return id;
@@ -43,11 +43,11 @@ public class Item {
 		this.nota = nota;
 	}
 
-	public BigDecimal getNumero() {
+	public Integer getNumero() {
 		return numero;
 	}
 
-	public void setNumero(BigDecimal numero) {
+	public void setNumero(Integer numero) {
 		this.numero = numero;
 	}
 
@@ -67,14 +67,11 @@ public class Item {
 		this.quantidade = quantidade;
 	}
 
-	public BigDecimal getValortotal() {
-		return valortotal;
+	public BigDecimal getValorItem() {
+		return valorItem;
 	}
 
-	public void setValortotal(BigDecimal valortotal) {
-		this.valortotal = valortotal;
+	public void setValorItem(BigDecimal valorItem) {
+		this.valorItem = valorItem;
 	}
-	
-	
-	
 }

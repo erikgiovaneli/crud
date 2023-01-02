@@ -7,5 +7,5 @@ export class Item{
   numero: number | undefined;
   produto: Produto | undefined;
   quantidade: number | undefined;
-  valortotal: number | undefined;
+  valorItem: number | undefined;
 }
