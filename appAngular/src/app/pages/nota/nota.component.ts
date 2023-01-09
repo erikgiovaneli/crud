@@ -74,7 +74,6 @@ export class NotaComponent {
         }
       }
     }
-
   }
 
   async adicionaNota(data: Nota) {
@@ -129,5 +128,15 @@ export class NotaComponent {
       }
     }
 
+  }
+
+  valorItemChanged(e: any) {
+    let valortotal: any;
+    if (e.value && e.value.length > 0){
+      for (let item of e.value) {
+        valortotal = item.data.produto.valor * item.data.quantidade;
+        item.data.valorItem = valortotal;
+      }
+    }
   }
 }

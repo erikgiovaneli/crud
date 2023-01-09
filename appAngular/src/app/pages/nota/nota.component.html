@@ -56,7 +56,8 @@
   <div *dxTemplate="let data of 'itemEditCellTemplate'" >
     <dx-data-grid [(dataSource)]="data.value"
                   [showBorders]="true"
-                  [showColumnLines]="true">
+                  [showColumnLines]="true"
+                  (onOptionChanged)="valorItemChanged($event)">
 
       <dxo-editing
         mode="row"
@@ -69,7 +70,7 @@
         <dxi-item dataField="numero"></dxi-item>
         <dxi-item dataField="produto"></dxi-item>
         <dxi-item dataField="quantidade"></dxi-item>
-        <dxi-item dataField="valorItem"></dxi-item>
+        <dxi-item dataField="valorItem" ></dxi-item>
       </dxo-form>
 
       <dxi-column dataField="numero" dataType="string">

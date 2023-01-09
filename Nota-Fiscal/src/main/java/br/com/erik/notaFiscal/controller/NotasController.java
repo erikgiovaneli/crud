@@ -31,10 +31,9 @@ public class NotasController {
 	
 	@PostMapping
 	public ResponseEntity<Nota> cadastrar(@RequestBody Nota nota, UriComponentsBuilder uriBuilder){
-		for (Item iten : nota.getItens()) {
-			iten.setNota(nota);
+		for (Item itens : nota.getItens()) {
+			itens.setNota(nota);
 		}
-
 		nota = notaRepository.save(nota);
 		URI uri = uriBuilder.path("/nota/{id}").buildAndExpand(nota.getId()).toUri();
 		return ResponseEntity.created(uri).body(nota);
