@@ -57,7 +57,7 @@
     <dx-data-grid [(dataSource)]="data.value"
                   [showBorders]="true"
                   [showColumnLines]="true"
-                  (onOptionChanged)="valorItemChanged($event)">
+                  (onSaving)="valorItemChanged($event)">
 
       <dxo-editing
         mode="row"
@@ -81,8 +81,7 @@
       <dxi-column dataField="quantidade" dataType="number" >
         <dxi-validation-rule type="required"></dxi-validation-rule>
       </dxi-column>
-      <dxi-column dataField="valorItem" dataType="number">
-        <dxi-validation-rule type="required"></dxi-validation-rule>
+      <dxi-column dataField="valorItem" dataType="number" [allowEditing]="false">
       </dxi-column>
 
       <div *dxTemplate="let data1 of 'produtoCellTemplate'"> {{data1.value ? data1.value.descricao : ""}} </div>

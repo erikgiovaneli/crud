@@ -131,11 +131,27 @@ export class NotaComponent {
   }
 
   valorItemChanged(e: any) {
-    let valortotal: any;
-    if (e.value && e.value.length > 0){
-      for (let item of e.value) {
-        valortotal = item.data.produto.valor * item.data.quantidade;
-        item.data.valorItem = valortotal;
+    let valortotal = 0;
+    if (e.changes && e.changes.length > 0){
+      if(e.changes[0].type === 'insert') {
+        for (let item of e.changes) {
+          valortotal = item.data.produto.valor * item.data.quantidade;
+          valortotal.toFixed(2).replace(".",",");
+          item.data.valorItem = valortotal;
+        }
+      } else if (e.changes[0].type === 'update'){
+        for (let item of e.changes) {
+           if (item.data.quantidade != null && item.data.produto != null){
+             valortotal = item.data.produto.valor * item.data.quantidade;
+             item.data.valorItem = valortotal.toFixed(2);
+           } else if (item.data.quantidade != null && item.data.produto == null){
+             valortotal = item.key.produto.valor * item.data.quantidade;
+             item.data.valorItem = valortotal.toFixed(2);
+           } else if (item.data.quantidade == null && item.data.produto != null){
+             valortotal = item.data.produto.valor * item.key.quantidade;
+             item.data.valorItem = valortotal.toFixed(2);
+           }
+        }
       }
     }
   }
